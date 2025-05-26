@@ -1,0 +1,19 @@
+// 1 - Array para armazenar os livros no estoque
+let estoque = [];
+
+// 2 - Funções para gerenciar o estoque
+
+function adicionarLivro(titulo, autor, quantidade) {
+  // Verifica se o livro já existe
+  const livroExistente = estoque.find(livro => livro.titulo === titulo);
+  if (livroExistente) {
+    console.log(`O livro "${titulo}" já está no estoque.`);
+    return;
+  }
+
+  estoque.push({ titulo, autor, quantidade });
+  console.log(`Livro "${titulo}" adicionado com sucesso.`);
+}
+
+function removerLivro(titulo) {
+  const index = estoque.findIndex(livro =>
