@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Botão Curtir</title>
+</head>
+<body>
+
+  <h1>Sistema de Curtidas</h1>
+
+  <input type="text" id="nomeInput" placeholder="Digite seu nome">
+  <button onclick="curtir()">Curtir</button>
+
+  <p id="mensagem">Ninguém curtiu</p>
+
+  <script>
+    const nomesCurtiram = [];
+
+    function curtir() {
+      const input = document.getElementById('nomeInput');
+      const nome = input.value.trim();
+      const mensagem = document.getElementById('mensagem');
+
+      if (nome === '') {
+        alert('Digite um nome antes de curtir.');
+        return;
+      }
+
+      if (!nomesCurtiram.includes(nome)) {
+        nomesCurtiram.push(nome);
+      }
+
+      const total = nomesCurtiram.length;
+
+      if (total === 0) {
+        mensagem.textContent = 'Ninguém curtiu';
+      } else if (total === 1) {
+        mensagem.textContent = `${nomesCurtiram[0]} curtiu`;
+      } else if (total === 2) {
+        mensagem.textContent = `${nomesCurtiram[0]} e ${nomesCurtiram[1]} curtiram`;
+      } else {
+        mensagem.textContent = `${nomesCurtiram[0]}, ${nomesCurtiram[1]} e mais ${total - 2} pessoas curtiram`;
+      }
+
+      input.value = ''; // Limpa o campo após curtir
+    }
+  </script>
+
+</body>
+</html>
